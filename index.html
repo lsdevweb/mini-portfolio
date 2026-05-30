@@ -160,8 +160,7 @@
             font-size: 0.78rem;
             color: #d1d1d1;
         }
-
-        /* Container Lateral do Perfil */
+/* Container Lateral do Perfil */
         .profile-container {
             display: flex;
             flex-direction: column;
@@ -174,18 +173,22 @@
         .profile-photo-wrapper {
             width: 150px;
             height: 200px;
-            border-radius: 30%;
+            border-radius: 24px; /* Bordas arredondadas fixas e harmônicas */
             border: 1px solid var(--accent-color);
             overflow: hidden;
             margin-bottom: 0.8rem;
             background: #111;
             box-shadow: 0 0 15px rgba(163, 255, 175, 0.1);
+            display: flex; /* Garante alinhamento interno perfeito */
+            align-items: center;
+            justify-content: center;
         }
 
         .profile-photo-wrapper img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: center 20%; /* Foca a câmera no rosto, evitando cortes na cabeça no celular */
         }
 
         .profile-phrase {
@@ -247,7 +250,7 @@
         .social-icons svg { width: 30px; height: 30px; fill: currentColor; color: var(--text-muted); }
         .social-icons a:hover svg { color: var(--accent-color); }
 
-        /* Ajustes Mobile */
+       /* Ajustes Mobile */
         @media (max-width: 767.98px) {
             html, body { height: auto; overflow: auto; }
             .main-wrapper { height: auto; padding: 1rem; gap: 1rem; }
@@ -257,7 +260,10 @@
             .card-fullwidth { grid-column: span 1; }
             .video-wrapper-compact { max-width: 100%; }
             .profile-container { padding-top: 0; }
-            .profile-photo-wrapper { width: 110px; height: 110px; border-radius: 50%; }
+            
+            /* Corrigido: Mantém a proporção retangular vertical e o contorno harmônico no celular */
+            .profile-photo-wrapper { width: 135px; height: 180px; border-radius: 20px; }
+            
             footer { text-align: center; margin-top: 1.5rem; }
             .footer-row { flex-direction: column !important; gap: 0.5rem; }
             .social-icons { justify-content: center; }

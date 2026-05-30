@@ -32,7 +32,18 @@ O objetivo deste projeto é centralizar a presença web com um alto índice de c
 - **Fallback Fluido para Mobile**: Transição automática para rolagem vertical padrão em telas menores, assegurando usabilidade contínua em qualquer smartphone.
 
 ---
+### 🔄 Auditoria e Melhoria Contínua (Pós-Deploy)
 
+Após o deploy inicial da aplicação na infraestrutura da Netlify, o projeto foi submetido a testes de estresse e auditorias rigorosas através do **W3C Markup Validation Service** e do **Google PageSpeed Insights**. Com base nos diagnósticos em ambiente de produção, foram aplicadas as seguintes otimizações estruturais:
+
+* **Refatoração Semântica e Acessibilidade (W3C):** Correção de aninhamentos de tags de cabeçalho (`<h3>`, `<h5>`) e ajustes nos atributos de acessibilidade (`aria-labelledby`) dos modais Bootstrap. O resultado eliminou 100% dos alertas de sintaxe, elevando a nota de **Acessibilidade para 95+**.
+* **Otimização do Critical Rendering Path (PageSpeed):** Antecipação da resolução de DNS e handshake através da implementação de diretivas `preconnect` no topo do `<head>` para ativos críticos (Google Fonts e iframes do YouTube), reduzindo o tempo de bloqueio de renderização.
+* **Eficiência de Ativos e Resolução de Imagem:** Identificação e redimensionamento físico da imagem de perfil (passando de uma resolução de câmera nativa para 400x533px em formato comprimido de 73KB via GIMP). Isso solucionou o aviso de *imagem maior do que as dimensões exibidas*, otimizando o consumo de dados móveis.
+* **Ajuste de Enquadramento Responsivo (Mobile):** Correção na folha de estilo dentro da `@media query (max-width: 767.98px)` para estabilizar as dimensões do container da foto, utilizando `object-position: center 20%` para garantir o enquadramento perfeito do rosto sem cortes agressivos em telas verticais de smartphones.
+
+#### 🚀 Próximos Passos & Evolução Futura
+* **Lazy Loading Avançado:** Implementar o carregamento tardio dinâmico (com JavaScript) para o iframe do YouTube, fazendo com que o player de vídeo só consuma processamento e rede após a primeira interação do usuário, visando cravar a nota de Desempenho Mobile em **100/100**.
+* **Conversão para WebP:** Migrar as imagens do formato tradicional `.jpg` para formatos de última geração como `.webp` ou `.avif` para reduzir ainda mais o peso total da página no carregamento inicial.
 ## 📂 Estrutura do Repositório
 
 ```text
